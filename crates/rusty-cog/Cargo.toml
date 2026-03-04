@@ -1,0 +1,41 @@
+[package]
+name = "rusty-cog"
+description = "Google Workspace CLI -- Rust port of gogcli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "cog"
+path = "src/main.rs"
+
+[features]
+default = []
+destructive-permanent = ["cog-api/destructive-permanent"]
+destructive-bulk-trash = ["cog-api/destructive-bulk-trash"]
+gemini-web = ["cog-api/gemini-web"]
+notebooklm = ["cog-api/notebooklm"]
+experimental = ["gemini-web", "notebooklm"]
+
+[dependencies]
+cog-core = { workspace = true }
+cog-ndjson = { workspace = true }
+cog-api = { workspace = true }
+
+smol = { workspace = true }
+futures-lite = { workspace = true }
+
+clap = { workspace = true }
+clap_complete = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+colored = { workspace = true }
+dirs = { workspace = true }
+
+[dev-dependencies]

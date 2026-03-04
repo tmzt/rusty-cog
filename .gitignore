@@ -1,0 +1,9 @@
+/target
+/fuzz/target
+/fuzz/corpus/*/
+/fuzz/artifacts/
+*.swp
+*.swo
+*~
+.DS_Store
+*.orig

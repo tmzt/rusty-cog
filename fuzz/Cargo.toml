@@ -1,0 +1,46 @@
+[package]
+name = "cog-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+arbitrary = { version = "1.4", features = ["derive"] }
+cog-ndjson = { path = "../crates/cog-ndjson", features = ["destructive-permanent", "destructive-bulk-trash"] }
+cog-core = { path = "../crates/cog-core", features = ["destructive-permanent", "destructive-bulk-trash"] }
+serde_json = "1.0"
+smol = "2.0"
+
+[[bin]]
+name = "ndjson_request"
+path = "fuzz_targets/ndjson_request.rs"
+doc = false
+
+[[bin]]
+name = "ndjson_response"
+path = "fuzz_targets/ndjson_response.rs"
+doc = false
+
+[[bin]]
+name = "ndjson_roundtrip"
+path = "fuzz_targets/ndjson_roundtrip.rs"
+doc = false
+
+[[bin]]
+name = "protocol_stream"
+path = "fuzz_targets/protocol_stream.rs"
+doc = false
+
+[[bin]]
+name = "envelope_arbitrary"
+path = "fuzz_targets/envelope_arbitrary.rs"
+doc = false
+
+[[bin]]
+name = "handshake"
+path = "fuzz_targets/handshake.rs"
+doc = false

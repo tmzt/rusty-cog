@@ -1,0 +1,35 @@
+[package]
+name = "cog-api"
+description = "Service daemon mode for rusty-cog"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+default = []
+destructive-permanent = ["cog-ndjson/destructive-permanent"]
+destructive-bulk-trash = ["cog-ndjson/destructive-bulk-trash"]
+gemini-web = ["cog-ndjson/gemini-web"]
+notebooklm = ["cog-ndjson/notebooklm"]
+experimental = ["gemini-web", "notebooklm"]
+
+[dependencies]
+cog-core = { workspace = true }
+cog-ndjson = { workspace = true }
+
+smol = { workspace = true }
+async-channel = { workspace = true }
+async-lock = { workspace = true }
+async-io = { workspace = true }
+futures-lite = { workspace = true }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[dev-dependencies]

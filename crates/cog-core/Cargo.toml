@@ -1,0 +1,51 @@
+[package]
+name = "cog-core"
+description = "Low-level async Google Workspace API library"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+default = []
+destructive-permanent = []
+destructive-bulk-trash = []
+gemini-web = []
+notebooklm = []
+experimental = ["gemini-web", "notebooklm"]
+
+[dependencies]
+smol = { workspace = true }
+async-channel = { workspace = true }
+async-lock = { workspace = true }
+async-io = { workspace = true }
+futures-lite = { workspace = true }
+
+hyper = { workspace = true }
+hyper-util = { workspace = true }
+smol-hyper = { workspace = true }
+http-body-util = { workspace = true }
+rustls = { workspace = true }
+futures-rustls = { workspace = true }
+
+serde = { workspace = true }
+serde_json = { workspace = true }
+json5 = { workspace = true }
+
+thiserror = { workspace = true }
+base64 = { workspace = true }
+chrono = { workspace = true }
+url = { workspace = true }
+uuid = { workspace = true }
+rand = { workspace = true }
+tracing = { workspace = true }
+dirs = { workspace = true }
+webpki-roots = { workspace = true }
+rustls-pemfile = { workspace = true }
+keyring = { workspace = true }
+
+[target.'cfg(unix)'.dependencies]
+libc = { workspace = true }
+
+[dev-dependencies]
+arbitrary = { workspace = true }
