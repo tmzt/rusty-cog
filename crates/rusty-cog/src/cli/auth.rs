@@ -80,6 +80,15 @@ pub struct LoginArgs {
     #[arg(long)]
     pub manual: bool,
 
+    /// Listen address for the OAuth callback (e.g. "127.0.0.1:44760",
+    /// "100.64.0.5:44760", or ":44760" to use the default host).
+    ///
+    /// Overrides the default loopback binding. The URI http://<addr>/
+    /// must be registered as a valid redirect URI for the OAuth client
+    /// in Google Cloud Console.
+    #[arg(long, value_name = "ADDR")]
+    pub listen: Option<String>,
+
     /// Authorize for remote/headless machine
     #[arg(long)]
     pub remote: bool,

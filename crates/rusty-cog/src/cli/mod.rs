@@ -157,6 +157,9 @@ pub enum Commands {
         shell: String,
     },
 
+    /// MCP server mode (JSON-RPC over stdio)
+    Mcp,
+
     /// Print version
     Version,
 

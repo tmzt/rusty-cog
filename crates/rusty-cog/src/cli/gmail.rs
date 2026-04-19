@@ -27,6 +27,25 @@ pub enum GmailCommands {
         label_ids: Vec<String>,
     },
 
+    /// List inbox messages (shorthand for `search "in:inbox"`)
+    Inbox {
+        /// Maximum number of results
+        #[arg(long, default_value_t = 20)]
+        max: u32,
+
+        /// Show unread only (adds `is:unread`)
+        #[arg(long)]
+        unread: bool,
+
+        /// Time window, e.g. "1d", "6h", "1w" (adds `newer_than:<val>`)
+        #[arg(long)]
+        newer_than: Option<String>,
+
+        /// Extra raw query text appended to the generated query
+        #[arg(long)]
+        q: Option<String>,
+    },
+
     /// Message operations
     Messages {
         #[command(subcommand)]

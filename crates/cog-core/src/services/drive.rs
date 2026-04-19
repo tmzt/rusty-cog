@@ -247,6 +247,17 @@ impl DriveService {
         self.http.get(&url, &self.token).await
     }
 
+    /// Export a Google-native document (Docs/Sheets/Slides) as another MIME type.
+    /// `alt=media` (`download`) returns an error for Google-native files — callers
+    /// must use export for those.
+    pub async fn export(&self, file_id: &str, mime_type: &str) -> Result<Vec<u8>> {
+        let url = self.url(&format!(
+            "/files/{file_id}/export?mimeType={}",
+            urlencoding(mime_type),
+        ));
+        self.http.get(&url, &self.token).await
+    }
+
     /// Copy a file.
     pub async fn copy(
         &self,

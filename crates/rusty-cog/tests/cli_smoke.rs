@@ -91,3 +91,17 @@ fn enable_commands_blocks_disallowed() {
         .expect("failed to run cog");
     assert!(!output.status.success());
 }
+
+#[test]
+fn auth_add_help_lists_listen_flag() {
+    let output = cog_binary()
+        .args(["auth", "add", "--help"])
+        .output()
+        .expect("failed to run cog");
+    assert!(output.status.success());
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    assert!(
+        stdout.contains("--listen"),
+        "expected --listen in `auth add --help` output, got:\n{stdout}"
+    );
+}
