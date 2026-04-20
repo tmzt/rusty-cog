@@ -2,6 +2,7 @@ mod cli;
 mod confirm;
 mod exit;
 mod mcp;
+pub mod mcp_cards;
 mod output;
 
 use clap::Parser;

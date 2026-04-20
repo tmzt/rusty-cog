@@ -38,5 +38,6 @@ tracing-subscriber = { workspace = true }
 colored = { workspace = true }
 dirs = { workspace = true }
 chrono = { workspace = true }
+base64 = { workspace = true }
 
 [dev-dependencies]
