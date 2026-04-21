@@ -79,7 +79,12 @@ async fn handle_tools_call(cli: &Cli, id: Option<Value>, params: &Value) -> Valu
 
     match result {
         Ok(result) => {
-            let text = format_markdown(name, &result.data);
+            let fmt = args.get("format").and_then(|v| v.as_str()).unwrap_or("markdown");
+            let text = if fmt == "json" {
+                serde_json::to_string(&result.data).unwrap_or_else(|_| format_markdown(name, &result.data))
+            } else {
+                format_markdown(name, &result.data)
+            };
             json!({
                 "jsonrpc": "2.0",
                 "id": id,
